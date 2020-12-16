@@ -1,3 +1,30 @@
+const PWD_PLUGINS = [
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `gatsby-starter-default`,
+      short_name: `starter`,
+      start_url: `/`,
+      background_color: `#663399`,
+      theme_color: `#663399`,
+      display: `minimal-ui`,
+      icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+    },
+  },
+  `gatsby-plugin-offline`, // To learn more, visit: https://gatsby.dev/offline
+];
+
+const CSS_PLUGINS = [
+  'gatsby-plugin-postcss',
+  {
+    // Removes unused css rules, must be after other CSS plugins
+    resolve: 'gatsby-plugin-purgecss',
+    options: {
+      tailwind: true,
+    },
+  },
+];
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -15,20 +42,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    ...PWD_PLUGINS,
+    ...CSS_PLUGINS,
   ],
-}
+};
